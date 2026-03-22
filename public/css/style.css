@@ -1,0 +1,256 @@
+/* ── Reset ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: #0d0d1a;
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  user-select: none;
+}
+
+/* ── Select Screen ───────────────────────────────────────────── */
+#selectScreen {
+  position: fixed; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10;
+}
+
+.select-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 40%, #0a1a4a 0%, #0d0d1a 70%);
+}
+
+/* Animated stars */
+.select-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 60%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 10%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 80%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 40%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 20% 90%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 15%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 75%, #fff 0%, transparent 100%);
+  opacity: 0.7;
+}
+
+.select-content {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 18px;
+  padding: 24px;
+  width: 100%; max-width: 660px;
+}
+
+.title-block h1 {
+  font-size: 2.6rem;
+  font-weight: 900;
+  text-align: center;
+  background: linear-gradient(135deg, #FFD700 0%, #FF8C00 50%, #FFD700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #aaa;
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+.choose-label {
+  color: #ccc;
+  font-size: 1rem;
+}
+
+/* ── Hero Cards ──────────────────────────────────────────────── */
+.hero-cards {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.vs-label {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #FFD700;
+  text-shadow: 0 0 20px #FFD700;
+}
+
+.hero-card {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px;
+  padding: 16px 20px 20px;
+  border-radius: 16px;
+  border: 2px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  cursor: pointer;
+  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+  width: 180px;
+}
+
+.hero-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,215,0,0.5);
+  box-shadow: 0 8px 30px rgba(255,215,0,0.2);
+}
+
+.hero-card.selected {
+  border-color: #FFD700;
+  background: rgba(255,215,0,0.08);
+  box-shadow: 0 0 30px rgba(255,215,0,0.35);
+  transform: translateY(-6px) scale(1.03);
+}
+
+.hero-card canvas {
+  border-radius: 10px;
+  display: block;
+}
+
+.hero-card h2 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.power-tag {
+  background: #1565C0;
+  color: #FFD700;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.power-desc {
+  font-size: 0.75rem;
+  color: #bbb;
+}
+
+/* ── Name Input ──────────────────────────────────────────────── */
+.name-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#playerName {
+  background: rgba(255,255,255,0.07);
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  padding: 10px 16px;
+  outline: none;
+  width: 220px;
+  transition: border-color 0.2s;
+}
+#playerName:focus { border-color: #FFD700; }
+#playerName::placeholder { color: #666; }
+
+#startBtn {
+  background: linear-gradient(135deg, #FFD700, #FF8C00);
+  color: #000;
+  font-size: 1.05rem;
+  font-weight: 900;
+  padding: 10px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: opacity 0.2s, transform 0.1s;
+}
+#startBtn:disabled { opacity: 0.35; cursor: not-allowed; }
+#startBtn:not(:disabled):hover { opacity: 0.9; transform: scale(1.04); }
+#startBtn:not(:disabled):active { transform: scale(0.97); }
+
+/* ── Hints ───────────────────────────────────────────────────── */
+.controls-hint {
+  color: #888;
+  font-size: 0.82rem;
+}
+.controls-hint span {
+  background: rgba(255,255,255,0.1);
+  padding: 2px 7px;
+  border-radius: 4px;
+  color: #FFD700;
+  font-family: monospace;
+}
+
+.online-hint {
+  color: #666;
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+/* ── Game Canvas ─────────────────────────────────────────────── */
+#gameCanvas {
+  position: fixed; inset: 0;
+  display: block;
+  background: #1a1a2e;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* ── HUD ─────────────────────────────────────────────────────── */
+#hud {
+  position: fixed;
+  bottom: 16px; left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: rgba(0,0,0,0.55);
+  border-radius: 10px;
+  padding: 10px 16px;
+  backdrop-filter: blur(4px);
+  font-size: 0.9rem;
+  z-index: 5;
+  flex-wrap: wrap;
+}
+
+#healthBar {
+  display: flex; align-items: center; gap: 6px;
+}
+.hud-label { color: #aaa; font-size: 0.78rem; }
+.bar-bg {
+  width: 100px; height: 10px;
+  background: #333;
+  border-radius: 5px;
+  overflow: hidden;
+}
+#healthFill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  border-radius: 5px;
+  transition: width 0.2s, background 0.3s;
+}
+
+#scoreDisplay { color: #FFD700; font-weight: 700; }
+#modeDisplay  { color: #aaa; font-size: 0.85rem; transition: color 0.3s; }
+#playerCount  { color: #888; font-size: 0.8rem; }
+
+/* ── Toast Message ───────────────────────────────────────────── */
+#gameMessage {
+  position: fixed;
+  top: 70px; left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.75);
+  color: #FFD700;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 10px 24px;
+  border-radius: 24px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: 20;
+  white-space: nowrap;
+}

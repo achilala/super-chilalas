@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Chilalas</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ── Character Select Screen ───────────────────────────── -->
+  <div id="selectScreen">
+    <div class="select-bg"></div>
+    <div class="select-content">
+      <div class="title-block">
+        <h1>⚡ SUPER CHILALAS ⚡</h1>
+        <p class="subtitle">Open World Superhero Adventure</p>
+      </div>
+
+      <p class="choose-label">Choose your hero!</p>
+
+      <div class="hero-cards">
+        <div class="hero-card" id="flashCard" onclick="selectHero('flash')">
+          <canvas id="flashPreview" width="130" height="200"></canvas>
+          <h2>Flash Boy</h2>
+          <div class="power-tag">⚡ Super Speed</div>
+          <p class="power-desc">SHIFT → Lightning Dash</p>
+        </div>
+
+        <div class="vs-label">VS</div>
+
+        <div class="hero-card" id="superCard" onclick="selectHero('super')">
+          <canvas id="superPreview" width="130" height="200"></canvas>
+          <h2>Super Boy</h2>
+          <div class="power-tag" style="background:#b71c1c">🦸 Flight & Strength</div>
+          <p class="power-desc">SHIFT → Super Punch</p>
+        </div>
+      </div>
+
+      <div class="name-row">
+        <input type="text" id="playerName" placeholder="Enter your hero name" maxlength="15" autocomplete="off">
+        <button id="startBtn" onclick="startGame()" disabled>PLAY!</button>
+      </div>
+
+      <div class="controls-hint">
+        <span>WASD / Arrows</span> Move &nbsp;·&nbsp;
+        <span>SPACE</span> Transform &nbsp;·&nbsp;
+        <span>SHIFT</span> Power (hero only)
+      </div>
+
+      <div class="online-hint">
+        🌐 Multiplayer: share your IP so friends can join on the same Wi-Fi
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Game Canvas ────────────────────────────────────────── -->
+  <canvas id="gameCanvas" style="display:none"></canvas>
+
+  <!-- ── HUD ───────────────────────────────────────────────── -->
+  <div id="hud" style="display:none">
+    <div id="healthBar">
+      <span class="hud-label">HP</span>
+      <div class="bar-bg"><div id="healthFill"></div></div>
+    </div>
+    <div id="scoreDisplay">Score: <span id="scoreValue">0</span></div>
+    <div id="modeDisplay">Normal Mode</div>
+    <div id="playerCount">Players: 1</div>
+  </div>
+
+  <!-- ── Toast Message ─────────────────────────────────────── -->
+  <div id="gameMessage"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/world.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/enemies.js"></script>
+  <script src="js/network.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
