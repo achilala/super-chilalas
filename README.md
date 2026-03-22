@@ -2,7 +2,11 @@
 
 An online multiplayer open-world superhero game built with HTML5 Canvas and Node.js. Two pixel-art heroes explore a city, transform into their superhero forms, and fight robot villains together in real time.
 
-![Super Chilalas](generated_image_ad038602-acb0-44e0-95e7-93ec26029825.png)
+<p align="center">
+  <img src="public/dyango_and_zam_superheroes.png" alt="Dyango and Zam — the Super Chilalas" width="400">
+</p>
+
+> 🎮 **Live Demo:** _coming soon — deploy instructions below_
 
 ---
 
